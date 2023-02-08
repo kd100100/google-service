@@ -1,13 +1,12 @@
 import { TextToSpeechClient } from "@google-cloud/text-to-speech";
 
-async function getSpeechFromText() {
+async function getSpeechFromText(text) {
   const client = new TextToSpeechClient({
     credentials: {
       client_email: process.env.CLIENT_EMAIL,
       private_key: process.env.PRIVATE_KEY,
     },
   });
-  const text = "hello, world!";
 
   const request = {
     audioConfig: {

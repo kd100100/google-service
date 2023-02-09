@@ -9,15 +9,11 @@ async function getTextFromSpeech(speech) {
   });
 
   const audio = {
-    uri: "gs://cloud-samples-data/speech/brooklyn_bridge.raw",
+    content: speech,
   };
   const config = {
-    enableAutomaticPunctuation: true,
-    enableAutomaticPunctuation: true,
-    maxAlternatives: 1,
-    profanityFilter: false,
-    sampleRateHertz: 16000,
-    encoding: "LINEAR16",
+    sampleRateHertz: 48000,
+    encoding: "WEBM_OPUS",
     languageCode: "en-IN",
     model: "default",
   };
@@ -26,7 +22,6 @@ async function getTextFromSpeech(speech) {
     config: config,
   };
 
-  // Detects speech in the audio file
   const [response] = await client.recognize(request);
   console.log(response);
   const transcription = response.results
